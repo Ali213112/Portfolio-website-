@@ -4,12 +4,14 @@ import { ProjectCard } from "@/components/ProjectCard";
 import {
   chains,
   contact,
+  experience,
   expertise,
   highlights,
   moreProjects,
   skills,
   timeline,
 } from "@/lib/projects";
+import type { TimelineItem } from "@/lib/projects";
 import type { CSSProperties } from "react";
 
 const personSchema = {
@@ -31,6 +33,39 @@ function Chain({ name }: { name: string }) {
     <span className="chain" style={{ "--dot": chain?.color ?? "#22d3ee" } as CSSProperties}>
       {name}
     </span>
+  );
+}
+
+function TimelineList({ items }: { items: TimelineItem[] }) {
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.title} className="row grid grid-cols-[1fr_auto] gap-x-4 py-5">
+          <div>
+            <p className="text-[15px] font-medium tracking-tight">{item.title}</p>
+            {item.org ? <p className="text-[14px] text-muted">{item.org}</p> : null}
+            {item.note ? (
+              <p className="mt-1.5 max-w-[56ch] text-[13.5px] leading-relaxed text-soft">{item.note}</p>
+            ) : null}
+            {item.image ? (
+              <div className="shot mt-4 max-w-[300px] !rounded-2xl !p-2">
+                <Image
+                  src={item.image}
+                  alt={item.imageAlt ?? ""}
+                  width={572}
+                  height={349}
+                  sizes="300px"
+                  className="h-auto w-full rounded-lg"
+                />
+              </div>
+            ) : null}
+          </div>
+          {item.period ? (
+            <p className="whitespace-nowrap text-[13px] text-soft">{item.period}</p>
+          ) : null}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -69,19 +104,16 @@ export default function HomePage() {
           </p>
           <p className="flex flex-wrap items-center gap-x-2 gap-y-2">
             <span>Chains I build on:</span>
-            <Chain name="Avalanche" />
-            <Chain name="Solana" />
-            <Chain name="BNB Chain" />
-            <Chain name="Vara Network" />
+            {chains
+              .filter((chain) => chain.name !== "EVM")
+              .map((chain) => (
+                <Chain key={chain.name} name={chain.name} />
+              ))}
           </p>
           <p>
             Have something in mind?{" "}
             <a className="link-line" href={`mailto:${contact.email}`}>
               Say hello
-            </a>
-            . You can also find my résumé{" "}
-            <a className="link-line" href={contact.resume}>
-              here
             </a>
             .
           </p>
@@ -125,31 +157,16 @@ export default function HomePage() {
       </section>
 
       <section aria-label="Experience" className="mx-auto mt-24 w-full max-w-[680px] px-5 sm:px-6">
-        <h2 className="label mb-6">Experience &amp; education</h2>
-        <ul>
-          {timeline.map((item) => (
-            <li key={item.title} className="row grid grid-cols-[1fr_auto] gap-x-4 py-5">
-              <div>
-                <p className="text-[15px] font-medium tracking-tight">{item.title}</p>
-                {item.org ? <p className="text-[14px] text-muted">{item.org}</p> : null}
-                <p className="mt-1.5 max-w-[56ch] text-[13.5px] leading-relaxed text-soft">{item.note}</p>
-                {item.image ? (
-                  <div className="shot mt-4 max-w-[300px] !rounded-2xl !p-2">
-                    <Image
-                      src={item.image}
-                      alt={item.imageAlt ?? ""}
-                      width={572}
-                      height={349}
-                      sizes="300px"
-                      className="h-auto w-full rounded-lg"
-                    />
-                  </div>
-                ) : null}
-              </div>
-              <p className="whitespace-nowrap text-[13px] text-soft">{item.period}</p>
-            </li>
-          ))}
-        </ul>
+        <h2 className="label mb-6">Experience</h2>
+        <TimelineList items={experience} />
+      </section>
+
+      <section
+        aria-label="Hackathons and education"
+        className="mx-auto mt-24 w-full max-w-[680px] px-5 sm:px-6"
+      >
+        <h2 className="label mb-6">Hackathons &amp; education</h2>
+        <TimelineList items={timeline} />
       </section>
 
       <section aria-label="What I do" className="mx-auto mt-24 w-full max-w-[680px] px-5 sm:px-6">

@@ -19,9 +19,6 @@ export function Footer() {
           <a className="hover:text-ink" href={contact.phoneHref}>
             Phone
           </a>
-          <a className="hover:text-ink" href={contact.resume}>
-            Résumé
-          </a>
         </nav>
       </div>
     </footer>

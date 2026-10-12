@@ -24,9 +24,14 @@ export type Project = {
 };
 
 export const chains = [
+  { name: "Ethereum", color: "#627eea" },
+  { name: "Polygon", color: "#8247e5" },
+  { name: "Arbitrum", color: "#28a0f0" },
+  { name: "Robinhood Chain", color: "#00c805" },
   { name: "Avalanche", color: "#e84142" },
   { name: "Solana", color: "#14f195" },
   { name: "BNB Chain", color: "#f0b90b" },
+  { name: "Starknet", color: "#ec796b" },
   { name: "Vara Network", color: "#00e0b0" },
   { name: "EVM", color: "#8b9bff" },
 ];
@@ -292,11 +297,32 @@ export type TimelineItem = {
   kind: string;
   title: string;
   org?: string;
-  period: string;
-  note: string;
+  period?: string;
+  note?: string;
   image?: string;
   imageAlt?: string;
 };
+
+/** Work history, most recent first. */
+export const experience: TimelineItem[] = [
+  {
+    kind: "Startup",
+    title: "Cards",
+    org: "Startup",
+    period: "Present · 4 months",
+  },
+  {
+    kind: "Company",
+    title: "Line",
+    org: "Web3 gaming platform",
+    period: "2024 — 2025",
+  },
+  {
+    kind: "Freelance",
+    title: "Freelance",
+    org: "Independent Web3 and game development",
+  },
+];
 
 export const timeline: TimelineItem[] = [
   {
@@ -323,7 +349,18 @@ export const skills: { label: string; items: string[] }[] = [
   { label: "Databases", items: ["MongoDB", "MySQL"] },
   {
     label: "Blockchain",
-    items: ["Avalanche (AVAX)", "Solana", "BNB Chain", "Vara Network", "EVM-compatible chains"],
+    items: [
+      "Ethereum",
+      "Polygon",
+      "Arbitrum",
+      "Robinhood Chain",
+      "Avalanche (AVAX)",
+      "Solana",
+      "BNB Chain",
+      "Starknet",
+      "Vara Network",
+      "EVM-compatible chains",
+    ],
   },
   { label: "Deployment", items: ["Vercel", "Railway"] },
   { label: "Version control", items: ["Git", "GitHub"] },
@@ -345,5 +382,4 @@ export const contact = {
   phone: "+91 86045 76304",
   phoneHref: "tel:+918604576304",
   location: "India",
-  resume: "/Ali_Danish_CV.docx",
 };
