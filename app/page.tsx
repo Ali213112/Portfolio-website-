@@ -24,7 +24,6 @@ const personSchema = {
   address: { "@type": "PostalAddress", addressCountry: "IN" },
   knowsAbout: expertise,
   url: "https://alidanish.vercel.app",
-  image: "https://alidanish.vercel.app/ali.jpg",
 };
 
 function Chain({ name }: { name: string }) {

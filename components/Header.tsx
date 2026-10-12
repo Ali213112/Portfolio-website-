@@ -12,12 +12,12 @@ export function Header() {
     <header className="mx-auto flex w-full max-w-[680px] items-center justify-between gap-4 px-5 pt-10 sm:px-6 sm:pt-14">
       <Link href="/" className="flex min-w-0 items-center gap-3">
         <Image
-          src="/ali.jpg"
-          alt="Ali Danish"
+          src="/batman.jpg"
+          alt="Batman"
           width={88}
           height={88}
           priority
-          className="h-11 w-11 shrink-0 rounded-full object-cover object-[50%_18%] ring-1 ring-[var(--line)]"
+          className="h-11 w-11 shrink-0 rounded-full object-cover object-center ring-1 ring-[var(--line)]"
         />
         <span className="min-w-0 leading-tight">
           <span className="block text-[15px] font-medium tracking-tight">Ali Danish</span>

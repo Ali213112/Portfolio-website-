@@ -338,7 +338,7 @@ export const timeline: TimelineItem[] = [
     period: "Course",
     note: "3D modelling, animation pipelines, character rigging, and interactive media production. The visual foundation behind the engineering.",
     image: "/batman.jpg",
-    imageAlt: "Dark, moody render of Batman in armour",
+    imageAlt: "Batman",
   },
 ];
 

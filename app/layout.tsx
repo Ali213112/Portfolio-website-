@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     siteName: "Ali Danish",
     title: "Ali Danish | Blockchain & Web3 Engineer",
     description: summary,
-    images: [{ url: "/ali.jpg", alt: "Ali Danish" }],
+    images: [{ url: "/batman.jpg", width: 572, height: 349, alt: "Ali Danish portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ali Danish | Blockchain & Web3 Engineer",
     description: summary,
-    images: ["/ali.jpg"],
+    images: ["/batman.jpg"],
   },
   robots: { index: true, follow: true },
 };
